@@ -145,10 +145,23 @@ export default function Results() {
               </p>
 
               <div className="bg-muted/50 rounded-xl p-6 max-w-xl mx-auto">
-                <p className="text-lg italic text-foreground" data-testid="text-affirmation">
+                <p className="text-sm text-muted-foreground mb-2">
+                  A thought to hold onto
+                </p>
+                <p
+                  className="text-lg italic text-foreground"
+                  data-testid="text-affirmation"
+                >
                   "{profile.affirmation}"
                 </p>
+
+                {profile.nlpReframe ? (
+                  <div className="mt-4 text-muted-foreground leading-relaxed">
+                    {profile.nlpReframe}
+                  </div>
+                ) : null}
               </div>
+
             </CardContent>
           </Card>
 
@@ -157,7 +170,7 @@ export default function Results() {
               Strategies That Can Help
             </h2>
             <p className="text-muted-foreground text-center mb-8">
-              Try these approaches to work with your resistance pattern
+              Pick just one. You don’t need to do them all.
             </p>
             
             <div className="grid md:grid-cols-2 gap-6">
@@ -205,7 +218,7 @@ export default function Results() {
                     data-testid="button-start-another"
                   >
                     <RotateCcw className="w-4 h-4 mr-2" />
-                    Try Another Task
+                    Start Another Reflection
                   </Button>
                 </div>
               </div>
@@ -214,7 +227,8 @@ export default function Results() {
 
           <div className="text-center mt-12">
             <p className="text-muted-foreground mb-4">
-              Remember: Starting is the hardest part. You've already taken the first step by understanding your resistance.
+               You don’t need to solve everything right now.
+                Understanding what’s happening is already progress.
             </p>
             <Link href="/">
               <Button variant="ghost" className="text-muted-foreground" data-testid="button-back-home">

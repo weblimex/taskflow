@@ -135,6 +135,7 @@ export const resistanceProfiles: Record<string, ResistanceProfile> = {
       },
     ],
     affirmation: "My best effort today is enough. I give myself permission to be imperfect.",
+    nlpReframe: "This is not a performance — it’s an experiment. Nothing you create right now is final, permanent, or visible to anyone else. You’re simply gathering material. Quality comes later; movement comes first."
   },
   clarity: {
     type: "clarity",
@@ -164,6 +165,7 @@ export const resistanceProfiles: Record<string, ResistanceProfile> = {
       },
     ],
     affirmation: "It's okay not to have all the answers. I can figure this out one question at a time.",
+    nlpReframe: "As you notice that clarity doesn’t come from having everything figured out, you may begin to feel a quiet sense of relief. You don’t need the full plan right now — just allowing yourself to define one small next step is enough to let momentum emerge naturally."
   },
   meaning: {
     type: "meaning",
@@ -193,6 +195,8 @@ export const resistanceProfiles: Record<string, ResistanceProfile> = {
       },
     ],
     affirmation: "I can find meaning in small things. This task is one step on a larger journey.",
+    nlpReframe: "As you recognize that clarity comes from asking the right questions rather than having all the answers, you may notice a sense of relief. You don’t need the whole plan right now — just allowing yourself to define one small next step can naturally create momentum."
+
   },
   fear: {
     type: "fear",
@@ -222,6 +226,8 @@ export const resistanceProfiles: Record<string, ResistanceProfile> = {
       },
     ],
     affirmation: "I am capable of handling whatever comes. I choose growth over comfort.",
+    nlpReframe: "As you become aware that this fear is simply your mind trying to protect you, you may notice it softening. Fear doesn’t mean danger — it often signals growth. You can allow the feeling to be present while still choosing to take a small, safe step forward."
+
   },
   inertia: {
     type: "inertia",
@@ -251,6 +257,7 @@ export const resistanceProfiles: Record<string, ResistanceProfile> = {
       },
     ],
     affirmation: "Starting is the hardest part, and I can do hard things. Momentum will carry me forward.",
+    nlpReframe: "You don’t need motivation to begin — movement creates motivation. As soon as you take one tiny action, your system naturally shifts into motion. You may notice that doing is easier than deciding."
   },
 };
 
