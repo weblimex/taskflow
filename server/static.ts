@@ -1,14 +1,10 @@
 import express, { type Express } from "express";
 import fs from "fs";
 import path from "path";
-import { fileURLToPath } from "url";
-
-// ✅ ESM-safe __dirname replacement
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 export function serveStatic(app: Express) {
-  const distPath = path.resolve(__dirname, "public");
+  // ✅ Always points to project root at runtime
+  const distPath = path.join(process.cwd(), "dist", "public");
 
   if (!fs.existsSync(distPath)) {
     throw new Error(
@@ -18,7 +14,7 @@ export function serveStatic(app: Express) {
 
   app.use(express.static(distPath));
 
-  // Fallback to index.html (SPA routing)
+  // SPA fallback
   app.use("*", (_req, res) => {
     res.sendFile(path.join(distPath, "index.html"));
   });
