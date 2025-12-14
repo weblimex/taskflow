@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -74,6 +74,8 @@ const iconMap: Record<string, LucideIcon> = {
 export default function Results() {
   const [, navigate] = useLocation();
   const { state, resetFlow } = useFlow();
+  const [interestResponse, setInterestResponse] = useState<"yes" | "no" | null>(null);
+
 
   useEffect(() => {
     if (!state.resistanceType) {
@@ -164,6 +166,85 @@ export default function Results() {
 
             </CardContent>
           </Card>
+          
+          <Card className="mb-12">
+  <CardContent className="p-6 md:p-8 text-center">
+    
+    <h3 className="text-xl font-semibold mb-2">
+      A moment to check in
+    </h3>
+
+    <p className="text-muted-foreground mb-6">
+      Would deeper guidance for this pattern help you right now?
+    </p>
+
+    {interestResponse === null && (
+      <div className="flex flex-col sm:flex-row gap-3 justify-center">
+        <Button
+          onClick={async () => {
+            setInterestResponse("yes");
+            console.log("deep_guidance_interest_yes");
+            // Send interest data to server
+            try {
+              await fetch('/api/interest', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  task: state.taskDescription,
+                  resistanceType: state.resistanceType,
+                  interest: 'yes'
+                })
+              });
+            } catch (error) {
+              console.error('Failed to log interest:', error);
+            }
+          }}
+        >
+          Yes, I’d like that
+        </Button>
+
+        <Button
+          variant="ghost"
+          onClick={async () => {
+            setInterestResponse("no");
+            console.log("deep_guidance_interest_no");
+            // Send interest data to server
+            try {
+              await fetch('/api/interest', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  task: state.taskDescription,
+                  resistanceType: state.resistanceType,
+                  interest: 'no'
+                })
+              });
+            } catch (error) {
+              console.error('Failed to log interest:', error);
+            }
+          }}
+        >
+          Not right now
+        </Button>
+      </div>
+    )}
+
+    {interestResponse === "yes" && (
+      <p className="mt-4 text-muted-foreground">
+        That makes sense. Sometimes a little more guidance can help things settle.
+        <br />
+        Deeper reflection tools are coming soon.
+      </p>
+    )}
+
+    {interestResponse === "no" && (
+      <p className="mt-4 text-muted-foreground">
+        That’s completely okay. Awareness alone is already progress.
+      </p>
+    )}
+  </CardContent>
+</Card>
+
 
           <div className="mb-12">
             <h2 className="text-2xl md:text-3xl font-semibold mb-2 text-center" data-testid="text-strategies-title">
