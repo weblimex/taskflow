@@ -72,6 +72,7 @@ export interface ResistanceProfile {
     icon: string;
   }[];
   affirmation: string;
+  nlpReframe: string;
 }
 
 export const resistanceProfiles: Record<string, ResistanceProfile> = {
@@ -103,6 +104,8 @@ export const resistanceProfiles: Record<string, ResistanceProfile> = {
       },
     ],
     affirmation: "I can handle this one small step at a time. I don't have to do everything at once.",
+    nlpReframe: "As you notice how overwhelming this task has felt, you may begin to realize that breaking it into one small, manageable step is already helping your mind relax. You don't need to do everything now — just allowing yourself to start gently is enough."
+
   },
   perfectionism: {
     type: "perfectionism",
